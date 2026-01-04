@@ -32,6 +32,12 @@ jobs:
     
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+    - name: Validate composer files
+      run: composer validate --strict
+
+    - name: Install Dependencies
+      run: composer install --prefer-dist --no-progress --no-interaction
     
     - name: Install Dependencies
       run: composer install -q --no-dev --no-interaction
